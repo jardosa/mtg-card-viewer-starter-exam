@@ -17,7 +17,7 @@ const Card = ({ cardDetails }) => {
 
   let replacedText;
 
-  textIconCodes?.forEach((t, i, arr) => {
+  const iconParse = textIconCodes?.forEach((t, i, arr) => {
     if (i === 0) {
       replacedText = reactStringReplace(cardDetails.text, t, (match, i) => {
         return (
@@ -27,7 +27,7 @@ const Card = ({ cardDetails }) => {
               "ms-cost",
               `ms-${
                 parsedIcons[0].toUpperCase() === "T" ? "tap" : parsedIcons[0]
-              }`
+              }`,
             ].join(" ")}
           />
         );
@@ -43,7 +43,7 @@ const Card = ({ cardDetails }) => {
               "ms-cost",
               `ms-${
                 parsedIcons[i].toUpperCase() === "T" ? "tap" : parsedIcons[1]
-              }`
+              }`,
             ].join(" ")}
           />
         )
@@ -62,7 +62,7 @@ const Card = ({ cardDetails }) => {
             className={[
               `ms`,
               "ms-cost",
-              `ms-${color.replace(/[{}]/, "").toLowerCase()}`
+              `ms-${color.replace(/[{}]/, "").toLowerCase()}`,
             ].join(" ")}
           />
         )
@@ -73,6 +73,8 @@ const Card = ({ cardDetails }) => {
       <div className="card-details-container">
         <div className="card-image">
           <img
+            width={226}
+            height={311}
             className={cx(
               css`
                 background-color: ${context.state.theme === "light"

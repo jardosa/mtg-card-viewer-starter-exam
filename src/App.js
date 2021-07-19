@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import "./styles.css";
 import { css, cx } from "emotion";
 import Context from "./context/Context";
+import { useRef } from "react";
 
 axios.defaults.baseURL = "https://api.magicthegathering.io/";
 
@@ -17,14 +18,14 @@ const getRandomCard = async (setState) => {
   try {
     setState((prevState) => ({
       loading: true,
-      card: { ...prevState.card }
+      card: { ...prevState.card },
     }));
     const {
-      data: { card }
+      data: { card },
     } = await axios.get(`/v1/cards/${randomCardNumber}`);
     setState((prevState) => ({
       loading: false,
-      card: { ...card }
+      card: { ...card },
     }));
   } catch (error) {
     console.error(error);
@@ -34,10 +35,12 @@ const getRandomCard = async (setState) => {
 const App = () => {
   const [state, setState] = useState({
     loading: false,
-    card: {}
+    card: {},
   });
 
   const context = useContext(Context);
+  const randomCardButtonRef = useRef(null);
+  const toggleThemeButtonRef = useRef(null);
 
   useEffect(() => {
     getRandomCard(setState);
@@ -80,6 +83,7 @@ const App = () => {
           `)}
         >
           <Button
+            ref={randomCardButtonRef}
             disabled={state.loading}
             onClick={() => getRandomCard(setState)}
           >
@@ -92,7 +96,10 @@ const App = () => {
               right: 20px;
             `)}
           >
-            <Button onClick={() => context.toggleTheme(context?.state?.theme)}>
+            <Button
+              ref={toggleThemeButtonRef}
+              onClick={() => context.toggleTheme(context?.state?.theme)}
+            >
               Toggle Theme
             </Button>
           </div>

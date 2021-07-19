@@ -2,10 +2,11 @@ import { css, cx } from "emotion";
 import React, { useContext } from "react";
 import Context from "./context/Context";
 
-export default React.forwardRef(function Button({children, ...props}) {
+export default React.forwardRef(function Button({ children, ...props }, ref) {
   const context = useContext(Context);
   return (
     <button
+      ref={ref}
       className={cx(css`
         cursor: pointer;
         appearance: none;
