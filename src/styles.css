@@ -1,0 +1,56 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.card-details-container {
+  max-width: 640px;
+  margin: auto;
+  width: 100%;
+  height: min-content;
+  display: flex;
+  flex-flow: row;
+  gap: 0 20px;
+  font-size: 1.2rem;
+}
+
+.card-image {
+  width: 226px;
+  height: 311px;
+}
+
+.card-table {
+  width: 100%;
+  min-height: 311px;
+  text-align: start;
+  border: 1px solid black;
+  box-sizing: border-box
+}
+
+.card-detail {
+  padding: 10px;
+}
+
+.card-detail-row {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+.card-detail-row:last-of-type {
+  border-bottom: 0px;
+}
+
+
+@media only screen and (max-width: 640px) {
+  .card-details-container {
+    min-width: 320px;
+    margin: auto;
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.2rem;
+  }
+}
